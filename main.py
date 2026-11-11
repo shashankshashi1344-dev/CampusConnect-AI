@@ -52,12 +52,12 @@ KNOWLEDGE:
 STUDENT QUESTION: {data.question}
 Answer:"""
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent"
     try:
         async with httpx.AsyncClient(timeout=30) as client:
             response = await client.post(
                 url,
-                params={"key": api_key},
+                headers={"x-goog-api-key": api_key},
                 json={"contents": [{"parts": [{"text": prompt}]}]},
             )
     except httpx.RequestError as exc:
